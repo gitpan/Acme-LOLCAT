@@ -10,7 +10,7 @@ use Exporter;
 our @ISA = qw/Exporter/;
 our @EXPORT = qw/translate/;
 
-our $VERSION = '0.0.1';
+our $VERSION = '0.0.2';
 
 my %repl = (
    q(i'?m\b) => 'im',            'you\b'   => 'yu',
@@ -78,13 +78,13 @@ Acme::LOLCAT - SPEEK LIEK A LOLCATZ
 
 =head1 VERSHON
 
-Version 0.0.1
+Version 0.0.2
 
 =head1 HOEW 2 YOOS IT
 
 This module translates english sentences into "LOLCAT".  For more
 information on LOLCAT, please consult wikipedia:
-(L< http://en.wikipedia.org/wiki/Lolcat >)
+(L<http://en.wikipedia.org/wiki/Lolcat>)
 
   use strict;
   use warnings;
