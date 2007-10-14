@@ -7,7 +7,7 @@ WriteMakefile(
     AUTHOR              => 'Kent Cowgill <kent@c2group.net>',
     ( $ExtUtils::MakeMaker::VERSION > 6.31 ? ( LICENSE => 'perl' ) : () ),
     VERSION_FROM        => 'lib/Acme/LOLCAT.pm',
-    ABSTRACT            => 'SPEEK LIEK A LOLCATZ',
+    ABSTRACT_FROM       => 'lib/Acme/LOLCAT.pm',
     PL_FILES            => {},
     PREREQ_PM => {
         'Test::More' => 0,

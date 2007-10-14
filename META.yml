@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Acme-LOLCAT
-version:             0.0.2
+version:             0.0.3
 abstract:            SPEEK LIEK A LOLCATZ
 license:             perl
 generated_by:        ExtUtils::MakeMaker version 6.36

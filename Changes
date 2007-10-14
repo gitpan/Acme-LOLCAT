@@ -1,5 +1,9 @@
 Revision history for Acme-LOLCAT
 
+0.0.3   October 15, 2007
+        Further build-related cleanup, test fixes, added
+        live translator link to documentation.
+
 0.0.2   October 1, 2007
         Cleaned up a few things with the build process.
 

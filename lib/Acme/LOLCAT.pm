@@ -10,7 +10,7 @@ use Exporter;
 our @ISA = qw/Exporter/;
 our @EXPORT = qw/translate/;
 
-our $VERSION = '0.0.2';
+our $VERSION = '0.0.3';
 
 my %repl = (
    q(i'?m\b) => 'im',            'you\b'   => 'yu',
@@ -72,13 +72,13 @@ sub translate {
 
 =pod
 
-=head1 NAEM
+=head1 NAME
 
 Acme::LOLCAT - SPEEK LIEK A LOLCATZ
 
 =head1 VERSHON
 
-Version 0.0.2
+Version 0.0.3
 
 =head1 HOEW 2 YOOS IT
 
@@ -109,13 +109,46 @@ Exports the function "translate" into your namespace.
 
 Pass translate some text, translate returns some LOLCATed text.
 
+If you prefer to call translate() with the fully qualified name,
+and don't want translate() to be exported into your namespace:
+
+  use Acme::LOLCAT ();
+
+  # ...
+
+  my $translated_text
+    = Acme::LOLCAT::Translate( $orginal_text );
+
 =back
+
+=head1 DEMONSTRASHUN TO SEEZ IT WERK IN REEL TIEM
+
+I've created a quick and dirty ajax powered web page to show how easy
+Acme:LOLCAT is to use.  Point your web browser here:
+
+L<http://www.kentcowgill.org/lolcat.html>
+
+The backend CGI that accepts and responds to the ajax requests is very
+simple:
+
+  #!/usr/bin/perl
+
+  use strict;
+  use warnings;
+
+  use CGI qw/:standard/;
+  use Acme::LOLCAT;
+
+  print header( -type => 'text/html'),
+        translate( param( 'english' );
+
+... where 'english' is the name of the textarea where input is accepted.
 
 =head1 DEPENDNSEEZ
 
 Requires C<Exporter>.
 
-=head1 GUY DAT WROTE IT
+=head1 GUY DAT ROTE IT
 
 Kent Cowgill C<kent@c2group.net>, L<http://www.kentcowgill.org>
 
@@ -135,3 +168,5 @@ This library is free software; you can redistribute it and/or modify it under
 the same terms as Perl itself.
 
 See L<http://www.perl.com/perl/misc/Artistic.html>
+
+=cut
