@@ -5,19 +5,21 @@ package Acme::LOLCAT;
 use strict;
 use warnings;
 
+use 5.6.1; # 'our' requires a "more recent" perl.
+
 use Exporter;
 
 our @ISA = qw/Exporter/;
 our @EXPORT = qw/translate/;
 
-our $VERSION = '0.0.3';
+our $VERSION = '0.0.4';
 
 my %repl = (
-   q(i'?m\b) => 'im',            'you\b'   => 'yu',
+   what     => [qw/wut whut/],   'you\b'   => [qw/yu yous yoo u/],
    cture    => 'kshur',          unless    => 'unles',
    'the\b'  => 'teh',            more      => 'moar',
-   my       => 'muh',            are       => 'r',
-   ing      => 'in',             ease      => 'eez',
+   my       => [qw/muh mah/],    are       => [qw/r is ar/],
+   'ing\b'  => [qw/in ins/],     ease      => 'eez',
    eese     => 'eez',            ph        => 'f',
    'as\b'   => 'az',             seriously => 'srsly',
    'er\b'   => 'r',              sion      => 'shun',
@@ -26,25 +28,29 @@ my %repl = (
    'of\b'   => [qw/of ov of/],   'uestion' => 'wesjun',
    want     => 'wants',          'ead\b'   => 'edd',
    ucke     => 'ukki',           sion      => 'shun',
-   oth      => 'udd',            '\boh\b'  => 'o',
+   oth      => 'udd',            '\boh\b'  => [qw/o ohs/],
    eak      => 'ekk',            age       => 'uj',
-   like     => [qw/likes liek/], love      => [qw/loves lub lubs/],
-   q(you'?re)=> [ qw/yore yr/ ], '(?!e)ight'=> 'ite',
-   'have a' => 'has',            '\bis\b'  => 'ar teh',
-   your => [ qw/yur ur yore/ ],  '\ba\b'   => q(),
-   '(?!ues)tion' => 'shun',      what      => 'wut',
+   like     => [qw/likes liek/], love      => [qw/loves lub lubs luv/],
+   'have a' => 'has',            '\bis\b'  => ['ar teh','ar'],
    who      => 'hoo',            q(')      => q(),
    'ese\b'  => 'eez',            outh      => 'owf',
    scio     => 'shu',            esque     => 'esk',
    ture     => 'chur',           '\btoo?\b'=> [qw/to t 2 to t/],
-   'ove\b'   => [ qw/oov ove uuv uv oove/ ],
+   tious    => 'shus',           'sure\b'  => 'shur',
+   'ok\b'   => [ qw/'k kay/ ],   '\ba\b'   => q(),
+   your     => [ qw/yur ur yore yoar/ ],
+   'ove\b'  => [ qw/oov ove uuv uv oove/ ],
    for      => [ qw/for 4 fr fur for foar/ ],
-   thank     => [ qw/fank tank thx thnx/ ],
+   thank    => [ qw/fank tank thx thnx/ ],
    good     => [ qw/gud goed guud/ ],
-   '(?:hello|\bhi\b|\bhey\b|howdy|\byo\b),?' => 'oh hai,',
-   really => [ qw/rly rily rilly rilley/ ],
-   world => [ qw/wurrld whirld wurld wrld/ ],
+   really   => [ qw/rly rily rilly rilley/ ],
+   world    => [ qw/wurrld whirld wurld wrld/ ],
+   q(i'?m\b)     => 'im',
+   '(?!e)ight'   => 'ite',
+   '(?!ues)tion' => 'shun',
+   q(you'?re)    => [ qw/yore yr/ ],
    'can\si\s(?:ple(?:a|e)(?:s|z)e?)?\s?have\sa' => 'i can has',
+   '(?:hello|\bhi\b|\bhey\b|howdy|\byo\b),?'    => 'oh hai,',
 );
 
 sub translate {
@@ -78,7 +84,7 @@ Acme::LOLCAT - SPEEK LIEK A LOLCATZ
 
 =head1 VERSHON
 
-Version 0.0.3
+Version 0.0.4
 
 =head1 HOEW 2 YOOS IT
 
@@ -159,6 +165,11 @@ system at L<http://rt.cpan.org>.
 
 L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Acme::LOLCAT> is the RT queue
 to Acme::LOLCAT. Please check to see if your bug has already been reported.
+
+=head1 AKNAHLUJMENTZ
+
+Thanks to Dyana Wu for the patch adding several variations and additions
+to the LOLCAT vocabulary.
 
 =head1 COPEERITE AN LISUNZ
 
