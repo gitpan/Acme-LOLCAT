@@ -5,52 +5,58 @@ package Acme::LOLCAT;
 use strict;
 use warnings;
 
-use 5.6.1; # 'our' requires a "more recent" perl.
+use 5.006001; # 'our' requires a "more recent" perl.
 
 use Exporter;
 
 our @ISA = qw/Exporter/;
 our @EXPORT = qw/translate/;
 
-our $VERSION = '0.0.4';
+our $VERSION = '0.0.5';
 
 my %repl = (
    what     => [qw/wut whut/],   'you\b'   => [qw/yu yous yoo u/],
    cture    => 'kshur',          unless    => 'unles',
    'the\b'  => 'teh',            more      => 'moar',
    my       => [qw/muh mah/],    are       => [qw/r is ar/],
-   'ing\b'  => [qw/in ins/],     ease      => 'eez',
    eese     => 'eez',            ph        => 'f',
    'as\b'   => 'az',             seriously => 'srsly',
    'er\b'   => 'r',              sion      => 'shun',
-   just     => 'jus',             's\b'    => 'z',
-   eady     => 'eddy',           'ome\b'   => 'um',
+   just     => 'jus',            'ose\b'   => 'oze',
+   eady     => 'eddy',           'ome?\b'  => 'um',
    'of\b'   => [qw/of ov of/],   'uestion' => 'wesjun',
    want     => 'wants',          'ead\b'   => 'edd',
-   ucke     => 'ukki',           sion      => 'shun',
-   oth      => 'udd',            '\boh\b'  => [qw/o ohs/],
+   ucke     => [qw/ukki ukke/],  sion      => 'shun',
    eak      => 'ekk',            age       => 'uj',
    like     => [qw/likes liek/], love      => [qw/loves lub lubs luv/],
-   'have a' => 'has',            '\bis\b'  => ['ar teh','ar'],
+   '\bis\b' => ['ar teh','ar'],  'nd\b'   => 'n',
    who      => 'hoo',            q(')      => q(),
    'ese\b'  => 'eez',            outh      => 'owf',
    scio     => 'shu',            esque     => 'esk',
    ture     => 'chur',           '\btoo?\b'=> [qw/to t 2 to t/],
    tious    => 'shus',           'sure\b'  => 'shur',
+   'tty\b'  => 'tteh',           were      => 'was',
    'ok\b'   => [ qw/'k kay/ ],   '\ba\b'   => q(),
+   ym       => 'im',             'thy\b'   => 'fee',
+   '\wly\w' => 'li',             'que\w'   => 'kwe',
+   oth      => 'udd',            ease      => 'eez',
+   'ing\b'  => [qw/in ins ng ing/],
+   'have'   => ['has', 'hav', 'haz a'],
    your     => [ qw/yur ur yore yoar/ ],
    'ove\b'  => [ qw/oov ove uuv uv oove/ ],
    for      => [ qw/for 4 fr fur for foar/ ],
    thank    => [ qw/fank tank thx thnx/ ],
-   good     => [ qw/gud goed guud/ ],
+   good     => [ qw/gud goed guud gude gewd/ ],
    really   => [ qw/rly rily rilly rilley/ ],
    world    => [ qw/wurrld whirld wurld wrld/ ],
    q(i'?m\b)     => 'im',
    '(?!e)ight'   => 'ite',
    '(?!ues)tion' => 'shun',
    q(you'?re)    => [ qw/yore yr/ ],
+   '\boh\b(?!.*hai)'  => [qw/o ohs/],
    'can\si\s(?:ple(?:a|e)(?:s|z)e?)?\s?have\sa' => 'i can has',
    '(?:hello|\bhi\b|\bhey\b|howdy|\byo\b),?'    => 'oh hai,',
+   '(?:god|allah|buddah?|diety)'                => 'ceiling cat',
 );
 
 sub translate {
@@ -74,6 +80,12 @@ sub translate {
   return uc $phrase;
 }
 
+# LOLCAT->can('has') # Thanks BOBTFISH :)
+sub has {}
+
+# LOLCAT->can('haz') # why not?
+sub haz {}
+
 1;
 
 =pod
@@ -84,7 +96,7 @@ Acme::LOLCAT - SPEEK LIEK A LOLCATZ
 
 =head1 VERSHON
 
-Version 0.0.4
+Version 0.0.5
 
 =head1 HOEW 2 YOOS IT
 
@@ -124,6 +136,20 @@ and don't want translate() to be exported into your namespace:
 
   my $translated_text
     = Acme::LOLCAT::Translate( $orginal_text );
+
+=back
+
+=head1 IM IN UR NAMESPAEC AND I CAN HAZ
+
+=over
+
+=item has
+
+Every LOLCAT->can('has')
+
+=item haz
+
+I CAN HAZ TOO
 
 =back
 
